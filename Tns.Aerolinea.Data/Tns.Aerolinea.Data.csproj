@@ -30,8 +30,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,7 +51,54 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\AerolineaTns.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AerolineaTns.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AerolineaTns.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AerolineaTns.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\LoginRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tns.Aerolinea.Application.DTO\Tns.Aerolinea.Application.DTO.csproj">
+      <Project>{2e91c65d-9c8a-4a02-b1f3-d2f83a44540a}</Project>
+      <Name>Tns.Aerolinea.Application.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tns.Aerolinea.Domain\Tns.Aerolinea.Domain.csproj">
+      <Project>{f4cb4f55-0d34-4c1c-b3fe-d74c688eb7a5}</Project>
+      <Name>Tns.Aerolinea.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tns.Aerolinea.Entities\Tns.Aerolinea.Entities.csproj">
+      <Project>{084c9597-2055-4aa8-8a58-69aff1027daf}</Project>
+      <Name>Tns.Aerolinea.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="Model\AerolineaTns.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AerolineaTns.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\AerolineaTns.edmx.diagram">
+      <DependentUpon>AerolineaTns.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\AerolineaTns.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AerolineaTns.edmx</DependentUpon>
+      <LastGenOutput>AerolineaTns.Context.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

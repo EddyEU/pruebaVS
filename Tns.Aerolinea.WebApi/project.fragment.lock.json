@@ -1,0 +1,110 @@
+{
+  "version": 2,
+  "exports": {
+    "Tns.Aerolinea.Application/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.6.1",
+      "compile": {
+        "bin/Debug/Tns.Aerolinea.Application.dll": {}
+      },
+      "runtime": {
+        "../packages/Autofac.3.5.2/lib/net40/Autofac.dll": {},
+        "bin/Debug/Tns.Aerolinea.Application.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/Tns.Aerolinea.Application.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    },
+    "Tns.Aerolinea.Application.DTO/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.6.1",
+      "compile": {
+        "bin/Debug/Tns.Aerolinea.Application.DTO.dll": {}
+      },
+      "runtime": {
+        "bin/Debug/Tns.Aerolinea.Application.DTO.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/Tns.Aerolinea.Application.DTO.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    },
+    "Tns.Aerolinea.Data/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.6.1",
+      "compile": {
+        "bin/Debug/Tns.Aerolinea.Data.dll": {}
+      },
+      "runtime": {
+        "../packages/EntityFramework.6.1.3/lib/net45/EntityFramework.SqlServer.dll": {},
+        "../packages/EntityFramework.6.1.3/lib/net45/EntityFramework.dll": {},
+        "bin/Debug/Tns.Aerolinea.Data.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/Tns.Aerolinea.Data.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    },
+    "Tns.Aerolinea.Domain/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.6.1",
+      "compile": {
+        "bin/Debug/Tns.Aerolinea.Domain.dll": {}
+      },
+      "runtime": {
+        "bin/Debug/Tns.Aerolinea.Domain.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/Tns.Aerolinea.Domain.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    },
+    "Tns.Aerolinea.Entities/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.6.1",
+      "compile": {
+        "bin/Debug/Tns.Aerolinea.Entities.dll": {}
+      },
+      "runtime": {
+        "bin/Debug/Tns.Aerolinea.Entities.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/Tns.Aerolinea.Entities.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    },
+    "Tns.Aerolinea.Infrastructure/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.6.1",
+      "compile": {
+        "bin/Debug/Tns.Aerolinea.Infrastructure.dll": {}
+      },
+      "runtime": {
+        "bin/Debug/Tns.Aerolinea.Infrastructure.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/Tns.Aerolinea.Infrastructure.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    }
+  }
+}

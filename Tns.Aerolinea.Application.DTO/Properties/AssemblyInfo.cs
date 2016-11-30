@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Tns.Aerolinea.Aplication")]
+[assembly: AssemblyTitle("Tns.Aerolinea.Application.DTO")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Tns.Aerolinea.Aplication")]
+[assembly: AssemblyProduct("Tns.Aerolinea.Application.DTO")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("67ebd55c-f0b4-48b4-ad24-0608013fdc8f")]
+[assembly: Guid("2e91c65d-9c8a-4a02-b1f3-d2f83a44540a")]
 
 // Version information for an assembly consists of the following four values:
 //
