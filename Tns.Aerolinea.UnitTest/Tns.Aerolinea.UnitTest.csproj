@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -45,13 +48,32 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
       </ItemGroup>
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Services\LoginApplicationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tns.Aerolinea.Application\Tns.Aerolinea.Application.csproj">
+      <Project>{88EC08B6-144C-47B6-BAC5-6258461E049E}</Project>
+      <Name>Tns.Aerolinea.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tns.Aerolinea.Data\Tns.Aerolinea.Data.csproj">
+      <Project>{e9986bda-999c-426d-a37f-a1f961b43b5b}</Project>
+      <Name>Tns.Aerolinea.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tns.Aerolinea.Entities\Tns.Aerolinea.Entities.csproj">
+      <Project>{084c9597-2055-4aa8-8a58-69aff1027daf}</Project>
+      <Name>Tns.Aerolinea.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

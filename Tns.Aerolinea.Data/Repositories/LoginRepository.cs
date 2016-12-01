@@ -12,6 +12,11 @@
 
     public class LoginRepository : ILoginRepository
     {
+        /// <summary>
+        /// Validar usuario y clave de un cliente especifico.
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
         public Usuario ValidarUsuario(LoginFilter login)
         {
             var usuarioValido = new Usuario();
