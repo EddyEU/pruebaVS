@@ -62,6 +62,8 @@
     <Folder Include="Security\" />
     <Folder Include="Maestros\" />
     <Folder Include="Maestros\Tables\" />
+    <Folder Include="Reserva\" />
+    <Folder Include="Reserva\Tables\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SchemaCompareTns.scmp" />
@@ -70,5 +72,10 @@
     <Build Include="Maestros\Tables\Usuario.sql" />
     <Build Include="Security\Maestros.sql" />
     <Build Include="Maestros\Tables\Ciudad.sql" />
+    <Build Include="Maestros\Tables\Avion.sql" />
+    <Build Include="Maestros\Tables\Aerolinea.sql" />
+    <Build Include="Reserva\Tables\Pasajero.sql" />
+    <Build Include="Reserva\Tables\Tiquete.sql" />
+    <Build Include="Security\Reserva.sql" />
   </ItemGroup>
 </Project>
