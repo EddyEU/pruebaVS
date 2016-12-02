@@ -9,7 +9,7 @@
   </SourceModelProvider>
   <TargetModelProvider>
     <ConnectionBasedModelProvider>
-      <ConnectionString>Data Source=.;Initial Catalog=AerolineaTNS;Persist Security Info=True;User ID=tns;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True</ConnectionString>
+      <ConnectionString>Data Source=.;Initial Catalog=AerolineaTNS;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True</ConnectionString>
     </ConnectionBasedModelProvider>
   </TargetModelProvider>
   <SchemaCompareSettingsService>
@@ -298,7 +298,7 @@
       </PropertyElementName>
       <PropertyElementName>
         <Name>TargetConnectionString</Name>
-        <Value>Data Source=.;Initial Catalog=AerolineaTNS;Persist Security Info=True;User ID=tns;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True;Application Name="Microsoft SQL Server Data Tools, Schema Compare"</Value>
+        <Value>Data Source=.;Initial Catalog=AerolineaTNS;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True;Application Name="Microsoft SQL Server Data Tools, Schema Compare"</Value>
       </PropertyElementName>
       <PropertyElementName>
         <Name>TreatVerificationErrorsAsWarnings</Name>
