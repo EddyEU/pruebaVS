@@ -69,5 +69,6 @@
   <ItemGroup>
     <Build Include="Maestros\Tables\Usuario.sql" />
     <Build Include="Security\Maestros.sql" />
+    <Build Include="Maestros\Tables\Ciudad.sql" />
   </ItemGroup>
 </Project>
