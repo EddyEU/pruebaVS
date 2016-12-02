@@ -29,6 +29,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tns.Aerolinea.Application",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tns.Aerolinea.Application.DTO", "Tns.Aerolinea.Application.DTO\Tns.Aerolinea.Application.DTO.csproj", "{2E91C65D-9C8A-4A02-B1F3-D2F83A44540A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataBase", "DataBase", "{BFD09FCF-657A-4DCD-B924-ED49F6E1EB54}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Tns.Aerolinea.DataBase", "Tns.Aerolinea.DataBase\Tns.Aerolinea.DataBase.sqlproj", "{5EAFF007-68AC-46A5-B71B-CE33F61C4C34}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +71,12 @@ Global
 		{2E91C65D-9C8A-4A02-B1F3-D2F83A44540A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E91C65D-9C8A-4A02-B1F3-D2F83A44540A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E91C65D-9C8A-4A02-B1F3-D2F83A44540A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EAFF007-68AC-46A5-B71B-CE33F61C4C34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EAFF007-68AC-46A5-B71B-CE33F61C4C34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EAFF007-68AC-46A5-B71B-CE33F61C4C34}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{5EAFF007-68AC-46A5-B71B-CE33F61C4C34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EAFF007-68AC-46A5-B71B-CE33F61C4C34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EAFF007-68AC-46A5-B71B-CE33F61C4C34}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,5 +90,6 @@ Global
 		{7BBF7272-45C4-4629-B8F4-29931F804992} = {95E87768-6FEF-4E2A-9B72-31E8D5CC0149}
 		{88EC08B6-144C-47B6-BAC5-6258461E049E} = {A9BD1358-3F47-4883-8F17-F88ACA8C8CA1}
 		{2E91C65D-9C8A-4A02-B1F3-D2F83A44540A} = {A9BD1358-3F47-4883-8F17-F88ACA8C8CA1}
+		{5EAFF007-68AC-46A5-B71B-CE33F61C4C34} = {BFD09FCF-657A-4DCD-B924-ED49F6E1EB54}
 	EndGlobalSection
 EndGlobal
