@@ -5,8 +5,7 @@
     [IdAerolinea]   INT           NOT NULL,
     [IdAvion]       INT           NOT NULL,
     [IdEstado]      TINYINT       NOT NULL,
-    [Fecha]         DATE          NOT NULL,
-    [Salida]        TIME (0)      NOT NULL,
+    [Fecha]         DATETIME      NOT NULL,
     [Observaciones] VARCHAR (500) NULL,
     CONSTRAINT [PK_Vuelo] PRIMARY KEY CLUSTERED ([IdVuelo] ASC),
     CONSTRAINT [FK_Vuelo_Aerolinea] FOREIGN KEY ([IdAerolinea]) REFERENCES [Maestros].[Aerolinea] ([IdAerolinea]),
@@ -15,6 +14,8 @@
     CONSTRAINT [FK_Vuelo_EstadoVuelo] FOREIGN KEY ([IdEstado]) REFERENCES [Maestros].[EstadoVuelo] ([IdEstado]),
     CONSTRAINT [FK_Vuelo_Origen] FOREIGN KEY ([IdOrigen]) REFERENCES [Maestros].[Origen] ([IdOrigen])
 );
+
+
 
 
 
