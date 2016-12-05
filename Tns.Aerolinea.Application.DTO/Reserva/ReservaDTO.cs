@@ -15,7 +15,6 @@
         public string CiudadDestino { get; set; }
         public string Aerolinea { get; set; }
         public DateTime FechaVuelo { get; set; }
-        public TimeSpan HoraSalidaVuelo { get; set; }
         public decimal ValorTotalReserva { get; set; }
         public DateTime FechaReserva { get; set; }
         public List<PasajeroDTO> Pasajeros { get; set; }

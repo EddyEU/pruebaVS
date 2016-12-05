@@ -15,7 +15,6 @@
         public int IdAerolinea { get; set; }
         public string Aerolinea { get; set; }
         public DateTime Fecha { get; set; }
-        public TimeSpan Salida { get; set; }
         public List<TarifaDTO> Tarifas { get; set; }
         public int IdEstado { get; set; }
         public string NombreEstado { get; set; }

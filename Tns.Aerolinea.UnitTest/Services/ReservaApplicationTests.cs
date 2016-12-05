@@ -6,6 +6,7 @@ namespace Tns.Aerolinea.Application.Services.Tests
     using DI;
     using DTO.Reserva;
     using Entities.Filter;
+    using Infrastructure.Excepciones;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Services;
     using System;
@@ -63,13 +64,21 @@ namespace Tns.Aerolinea.Application.Services.Tests
 
             ReservaVueloFilter filtro = new ReservaVueloFilter
             {
-                FechaVuelo = new DateTime(2016, 12, 15, 4, 0, 0),
+                FechaVuelo = new DateTime(2016, 12, 15, 7, 15, 0),
                 IdUsuario = 1,
                 IdVuelo = 1,
                 TiquetePasajero = tiquetesPasajero
             };
 
-            target.ReservarVuelo(filtro);
+            try
+            {
+                target.ReservarVuelo(filtro);
+            }
+            catch (BussinesException ex)
+            {
+                //Excepción esperada según alguna regla de negocio.
+                Assert.IsNotNull(ex);
+            }
         }
 
         [TestMethod()]

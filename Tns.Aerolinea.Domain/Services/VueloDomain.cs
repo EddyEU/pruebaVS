@@ -19,7 +19,7 @@
             //No es necesario devolver información e las tarifas.
             vuelos.ForEach(item => item.Tarifas = null);
             //se ordena la lista de vuelos disponibles por el horario en forma ascendente.
-            return vuelos.OrderBy(vuelo => vuelo.Fecha).ThenBy(vuelo => vuelo.Salida).ToList();
+            return vuelos.OrderBy(vuelo => vuelo.Fecha).ToList();
         }
 
         /// <summary>

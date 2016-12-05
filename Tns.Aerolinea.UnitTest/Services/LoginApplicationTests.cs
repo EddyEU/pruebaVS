@@ -3,6 +3,7 @@
     using DI;
     using DTO.Login;
     using Entities.Filter;
+    using Infrastructure.Excepciones;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass()]
@@ -40,8 +41,15 @@
                 Login = "david",
                 Clave = "davidclave"
             };
-
-            target.RegistrarUsuario(filtro);
+            try
+            {
+                target.RegistrarUsuario(filtro);
+            }
+            catch (BussinesException ex)
+            {
+                //Excepción esperada según alguna regla de negocio.
+                Assert.IsNotNull(ex);
+            }
         }
     }
 }

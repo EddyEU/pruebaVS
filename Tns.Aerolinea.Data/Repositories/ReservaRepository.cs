@@ -35,7 +35,7 @@
         public List<Reserva> ConsultarReservas(int idUsuario, DateTime fecha)
         {
             List<Reserva> reservas = null;
-            fecha = fecha.Date;
+
             using (AerolineaTnsEntities context = new AerolineaTnsEntities())
             {
                 reservas = context.Reserva.Where(reserva => reserva.Vuelo.Fecha == fecha && reserva.IdUsuario == idUsuario).ToList();
@@ -56,7 +56,8 @@
 
             using (AerolineaTnsEntities context = new AerolineaTnsEntities())
             {
-                var reservas = context.Reserva.Where(reserva => reserva.Vuelo.Fecha.Date >= DateTime.Today.Date && reserva.IdUsuario == idUsuario).ToList();
+                var reservas = context.Reserva.Where(reserva => reserva.Vuelo.Fecha >= DateTime.Now
+                                                        && reserva.IdUsuario == idUsuario).ToList();
 
                 reservasUsuario = reservas.Select(reserva => new ReservaDTO()
                 {
@@ -65,7 +66,6 @@
                     CiudadOrigen = reserva.Vuelo.Origen.Ciudad.NombreCiudad,
                     FechaReserva = reserva.FechaReserva,
                     FechaVuelo = reserva.Vuelo.Fecha,
-                    HoraSalidaVuelo = reserva.Vuelo.Salida,
                     IdDestino = reserva.Vuelo.IdDestino,
                     IdOrigen = reserva.Vuelo.IdOrigen,
                     IdReserva = reserva.IdReserva,

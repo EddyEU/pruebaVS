@@ -143,8 +143,7 @@
           <Property Name="IdAerolinea" Type="int" Nullable="false" />
           <Property Name="IdAvion" Type="int" Nullable="false" />
           <Property Name="IdEstado" Type="tinyint" Nullable="false" />
-          <Property Name="Fecha" Type="date" Nullable="false" />
-          <Property Name="Salida" Type="time" Precision="0" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
           <Property Name="Observaciones" Type="varchar" MaxLength="500" />
         </EntityType>
         <Association Name="FK_Asiento_Avion">
@@ -688,8 +687,7 @@
           <Property Name="IdAerolinea" Type="Int32" Nullable="false" />
           <Property Name="IdAvion" Type="Int32" Nullable="false" />
           <Property Name="IdEstado" Type="Byte" Nullable="false" />
-          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Salida" Type="Time" Nullable="false" Precision="0" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Observaciones" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Aerolinea" Relationship="AerolineaTNSModel.FK_Vuelo_Aerolinea" FromRole="Vuelo" ToRole="Aerolinea" />
           <NavigationProperty Name="Avion" Relationship="AerolineaTNSModel.FK_Vuelo_Avion" FromRole="Vuelo" ToRole="Avion" />
@@ -1052,7 +1050,6 @@
             <EntityTypeMapping TypeName="AerolineaTNSModel.Vuelo">
               <MappingFragment StoreEntitySet="Vuelo">
                 <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
-                <ScalarProperty Name="Salida" ColumnName="Salida" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
                 <ScalarProperty Name="IdAvion" ColumnName="IdAvion" />

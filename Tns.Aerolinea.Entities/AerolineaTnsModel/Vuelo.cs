@@ -43,8 +43,6 @@ public partial class Vuelo
 
     public System.DateTime Fecha { get; set; }
 
-    public System.TimeSpan Salida { get; set; }
-
     public string Observaciones { get; set; }
 
 
