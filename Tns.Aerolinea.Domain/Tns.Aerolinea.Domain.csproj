@@ -60,6 +60,10 @@
       <Project>{084c9597-2055-4aa8-8a58-69aff1027daf}</Project>
       <Name>Tns.Aerolinea.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Tns.Aerolinea.Infrastructure\Tns.Aerolinea.Infrastructure.csproj">
+      <Project>{3FE0E436-8AC9-4D91-B4C3-6BC6C3A63333}</Project>
+      <Name>Tns.Aerolinea.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

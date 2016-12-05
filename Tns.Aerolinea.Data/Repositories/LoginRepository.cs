@@ -58,6 +58,23 @@
         }
 
         /// <summary>
+        /// Consultar usuario por id.
+        /// </summary>
+        /// <returns></returns>
+        public Usuario ConsultarUsuario(int idUsuario)
+        {
+            Usuario usuarioValido = null;
+
+            using (AerolineaTnsEntities context = new AerolineaTnsEntities())
+            {
+                usuarioValido = context.Set<Usuario>()
+                    .Where(usuario => usuario.IdUsuario == idUsuario).FirstOrDefault();
+            }
+
+            return usuarioValido;
+        }
+
+        /// <summary>
         /// Registrar un nuevo usuario en la base de datos.
         /// </summary>
         /// <param name="usuario"></param>

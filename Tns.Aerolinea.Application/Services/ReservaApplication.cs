@@ -19,16 +19,17 @@
         public void ReservarVuelo(ReservaVueloFilter filtroReserva)
         {
             IReservaRepository reservaRepository = DependencyInjectionContainer.Resolve<IReservaRepository>();
+            ILoginRepository loginRepository = DependencyInjectionContainer.Resolve<ILoginRepository>();
             IReservaDomain reservaDomain = DependencyInjectionContainer.Resolve<IReservaDomain>();
 
             Reserva reserva = new Reserva();
-            List<Reserva> reservasPrevias = new List<Reserva>();
 
             //Consultar Reservas previas del usuario.
-            reservasPrevias = reservaRepository.ConsultarReservas(filtroReserva.IdUsuario, filtroReserva.FechaVuelo);
+            List<Reserva> reservasPrevias = reservaRepository.ConsultarReservas(filtroReserva.IdUsuario, filtroReserva.FechaVuelo);
 
             //Validar datos del usuario y reservas previas.
-            reserva = reservaDomain.ValidarReserva(filtroReserva, reservasPrevias);
+            Usuario usuario = loginRepository.ConsultarUsuario(filtroReserva.IdUsuario);
+            reserva = reservaDomain.ValidarReserva(filtroReserva, reservasPrevias, usuario);
 
             if (reserva != null)
                 //Crear la reserva del vuelo

@@ -61,11 +61,29 @@ namespace Tns.Aerolinea.Infrastructure.Mensajes {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to El usuario ya tiene una reserva de un vuelo para la misma fecha, no es posible generarle una nueva reserva..
+        /// </summary>
+        public static string ErrorReservasPrevias {
+            get {
+                return ResourceManager.GetString("ErrorReservasPrevias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to El usuario ya tiene una reserva hecha para el mismo dia. No es posible crear otra reserva..
         /// </summary>
         public static string ErrorReservaVuelo {
             get {
                 return ResourceManager.GetString("ErrorReservaVuelo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El usuario es menor de edad y no puede realizar una reserva de vuelo..
+        /// </summary>
+        public static string ErrorUsuarioMenorEdad {
+            get {
+                return ResourceManager.GetString("ErrorUsuarioMenorEdad", resourceCulture);
             }
         }
         

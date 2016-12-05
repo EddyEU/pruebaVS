@@ -20,6 +20,12 @@
         Usuario ConsultarUsuario(string cedula);
 
         /// <summary>
+        /// Consultar usuario por id.
+        /// </summary>
+        /// <returns></returns>
+        Usuario ConsultarUsuario(int idUsuario);
+
+        /// <summary>
         /// Registrar un nuevo usuario en la base de datos.
         /// </summary>
         /// <param name="usuario"></param>

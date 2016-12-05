@@ -35,10 +35,10 @@
         public List<Reserva> ConsultarReservas(int idUsuario, DateTime fecha)
         {
             List<Reserva> reservas = null;
-
+            fecha = fecha.Date;
             using (AerolineaTnsEntities context = new AerolineaTnsEntities())
             {
-                reservas = context.Reserva.Where(reserva => reserva.Vuelo.Fecha.Date == fecha.Date && reserva.IdUsuario == idUsuario).ToList();
+                reservas = context.Reserva.Where(reserva => reserva.Vuelo.Fecha == fecha && reserva.IdUsuario == idUsuario).ToList();
             }
 
             return reservas;

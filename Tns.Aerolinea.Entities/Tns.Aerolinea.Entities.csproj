@@ -88,7 +88,7 @@
       <DependentUpon>AerolineaTns.tt</DependentUpon>
     </Compile>
     <Compile Include="Filter\LoginFilter.cs" />
-    <Compile Include="Filter\PasajeroDTO.cs" />
+    <Compile Include="Filter\PasajeroFilter.cs" />
     <Compile Include="Filter\ReservaVueloFilter.cs" />
     <Compile Include="Filter\TiquetePasajeroFilter.cs" />
     <Compile Include="Filter\VueloCiudadFilter.cs" />
@@ -102,6 +102,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tns.Aerolinea.Application.DTO\Tns.Aerolinea.Application.DTO.csproj">
+      <Project>{2E91C65D-9C8A-4A02-B1F3-D2F83A44540A}</Project>
+      <Name>Tns.Aerolinea.Application.DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

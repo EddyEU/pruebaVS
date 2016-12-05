@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ErrorReservasPrevias" xml:space="preserve">
+    <value>El usuario ya tiene una reserva de un vuelo para la misma fecha, no es posible generarle una nueva reserva.</value>
+  </data>
   <data name="ErrorReservaVuelo" xml:space="preserve">
     <value>El usuario ya tiene una reserva hecha para el mismo dia. No es posible crear otra reserva.</value>
+  </data>
+  <data name="ErrorUsuarioMenorEdad" xml:space="preserve">
+    <value>El usuario es menor de edad y no puede realizar una reserva de vuelo.</value>
   </data>
   <data name="ErrorUsuarioRegistrado" xml:space="preserve">
     <value>El usuario ya se encuentra registrado.</value>

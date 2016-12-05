@@ -129,6 +129,7 @@
           </Key>
           <Property Name="IdReserva" Type="bigint" Nullable="false" />
           <Property Name="IdPasajero" Type="bigint" Nullable="false" />
+          <Property Name="IdTipoAsiento" Type="smallint" Nullable="false" />
           <Property Name="IdAsiento" Type="int" />
           <Property Name="ValorTiquete" Type="numeric" Precision="18" Scale="0" Nullable="false" />
         </EntityType>
@@ -266,6 +267,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TiquetePasajero_TipoAsiento">
+          <End Role="TipoAsiento" Type="Self.TipoAsiento" Multiplicity="1" />
+          <End Role="TiquetePasajero" Type="Self.TiquetePasajero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoAsiento">
+              <PropertyRef Name="IdTipoAsiento" />
+            </Principal>
+            <Dependent Role="TiquetePasajero">
+              <PropertyRef Name="IdTipoAsiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TiquetePasajero_Tiquete">
           <End Role="Reserva" Type="Self.Reserva" Multiplicity="1" />
           <End Role="TiquetePasajero" Type="Self.TiquetePasajero" Multiplicity="*" />
@@ -393,6 +406,10 @@
             <End Role="Pasajero" EntitySet="Pasajero" />
             <End Role="TiquetePasajero" EntitySet="TiquetePasajero" />
           </AssociationSet>
+          <AssociationSet Name="FK_TiquetePasajero_TipoAsiento" Association="Self.FK_TiquetePasajero_TipoAsiento">
+            <End Role="TipoAsiento" EntitySet="TipoAsiento" />
+            <End Role="TiquetePasajero" EntitySet="TiquetePasajero" />
+          </AssociationSet>
           <AssociationSet Name="FK_TiquetePasajero_Tiquete" Association="Self.FK_TiquetePasajero_Tiquete">
             <End Role="Reserva" EntitySet="Reserva" />
             <End Role="TiquetePasajero" EntitySet="TiquetePasajero" />
@@ -476,6 +493,10 @@
           <AssociationSet Name="FK_Tarifa_TipoAsiento" Association="AerolineaTNSModel.FK_Tarifa_TipoAsiento">
             <End Role="TipoAsiento" EntitySet="TipoAsiento" />
             <End Role="Tarifa" EntitySet="Tarifa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TiquetePasajero_TipoAsiento" Association="AerolineaTNSModel.FK_TiquetePasajero_TipoAsiento">
+            <End Role="TipoAsiento" EntitySet="TipoAsiento" />
+            <End Role="TiquetePasajero" EntitySet="TiquetePasajero" />
           </AssociationSet>
           <AssociationSet Name="FK_Tiquete_Usuario" Association="AerolineaTNSModel.FK_Tiquete_Usuario">
             <End Role="Usuario" EntitySet="Usuario" />
@@ -574,6 +595,7 @@
           <Property Name="Observaciones" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Asiento" Relationship="AerolineaTNSModel.FK_Asiento_TipoAsiento" FromRole="TipoAsiento" ToRole="Asiento" />
           <NavigationProperty Name="Tarifa" Relationship="AerolineaTNSModel.FK_Tarifa_TipoAsiento" FromRole="TipoAsiento" ToRole="Tarifa" />
+          <NavigationProperty Name="TiquetePasajero" Relationship="AerolineaTNSModel.FK_TiquetePasajero_TipoAsiento" FromRole="TipoAsiento" ToRole="TiquetePasajero" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -648,8 +670,10 @@
           </Key>
           <Property Name="IdReserva" Type="Int64" Nullable="false" />
           <Property Name="IdPasajero" Type="Int64" Nullable="false" />
+          <Property Name="IdTipoAsiento" Type="Int16" Nullable="false" />
           <Property Name="IdAsiento" Type="Int32" />
           <Property Name="ValorTiquete" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="TipoAsiento" Relationship="AerolineaTNSModel.FK_TiquetePasajero_TipoAsiento" FromRole="TiquetePasajero" ToRole="TipoAsiento" />
           <NavigationProperty Name="Asiento" Relationship="AerolineaTNSModel.FK_TiquetePasajero_Asiento" FromRole="TiquetePasajero" ToRole="Asiento" />
           <NavigationProperty Name="Pasajero" Relationship="AerolineaTNSModel.FK_TiquetePasajero_Pasajero" FromRole="TiquetePasajero" ToRole="Pasajero" />
           <NavigationProperty Name="Reserva" Relationship="AerolineaTNSModel.FK_TiquetePasajero_Tiquete" FromRole="TiquetePasajero" ToRole="Reserva" />
@@ -791,6 +815,18 @@
               <PropertyRef Name="IdTipoAsiento" />
             </Principal>
             <Dependent Role="Tarifa">
+              <PropertyRef Name="IdTipoAsiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TiquetePasajero_TipoAsiento">
+          <End Type="AerolineaTNSModel.TipoAsiento" Role="TipoAsiento" Multiplicity="1" />
+          <End Type="AerolineaTNSModel.TiquetePasajero" Role="TiquetePasajero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoAsiento">
+              <PropertyRef Name="IdTipoAsiento" />
+            </Principal>
+            <Dependent Role="TiquetePasajero">
               <PropertyRef Name="IdTipoAsiento" />
             </Dependent>
           </ReferentialConstraint>
@@ -1006,6 +1042,7 @@
               <MappingFragment StoreEntitySet="TiquetePasajero">
                 <ScalarProperty Name="ValorTiquete" ColumnName="ValorTiquete" />
                 <ScalarProperty Name="IdAsiento" ColumnName="IdAsiento" />
+                <ScalarProperty Name="IdTipoAsiento" ColumnName="IdTipoAsiento" />
                 <ScalarProperty Name="IdPasajero" ColumnName="IdPasajero" />
                 <ScalarProperty Name="IdReserva" ColumnName="IdReserva" />
               </MappingFragment>

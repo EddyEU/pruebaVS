@@ -3,6 +3,7 @@
     public class TiquetePasajeroFilter
     {
         public decimal ValorTiquete { get; set; }
-        public PasajeroDTO Pasajero { get; set; }
+        public short IdTipoAsiento { get; set; }
+        public PasajeroFilter Pasajero { get; set; }
     }
 }
