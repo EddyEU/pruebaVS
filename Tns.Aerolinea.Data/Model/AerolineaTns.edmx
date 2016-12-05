@@ -5,47 +5,1024 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="AerolineaTNSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Aerolinea">
+          <Key>
+            <PropertyRef Name="IdAerolinea" />
+          </Key>
+          <Property Name="IdAerolinea" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nit" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Avion">
+          <Key>
+            <PropertyRef Name="IdAvion" />
+          </Key>
+          <Property Name="IdAvion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Modelo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Fabricante" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Capacidad" Type="int" Nullable="false" />
+          <Property Name="Siglas" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ciudad">
+          <Key>
+            <PropertyRef Name="IdCiudad" />
+          </Key>
+          <Property Name="IdCiudad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreCiudad" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="Activa" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Destino">
+          <Key>
+            <PropertyRef Name="IdDestino" />
+          </Key>
+          <Property Name="IdDestino" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCiudad" Type="int" Nullable="false" />
+          <Property Name="Aeropuerto" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EstadoVuelo">
+          <Key>
+            <PropertyRef Name="IdEstado" />
+          </Key>
+          <Property Name="IdEstado" Type="tinyint" Nullable="false" />
+          <Property Name="NombreEstado" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Origen">
+          <Key>
+            <PropertyRef Name="IdOrigen" />
+          </Key>
+          <Property Name="IdOrigen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCiudad" Type="int" Nullable="false" />
+          <Property Name="Aeropuerto" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoAsiento">
+          <Key>
+            <PropertyRef Name="IdTipoAsiento" />
+          </Key>
+          <Property Name="IdTipoAsiento" Type="smallint" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Observaciones" Type="varchar" MaxLength="500" />
+        </EntityType>
         <EntityType Name="Usuario">
           <Key>
             <PropertyRef Name="IdUsuario" />
           </Key>
           <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Cedula" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="date" Nullable="false" />
           <Property Name="Login" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Clave" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="Asiento">
+          <Key>
+            <PropertyRef Name="IdAsiento" />
+          </Key>
+          <Property Name="IdAsiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdAvion" Type="int" Nullable="false" />
+          <Property Name="IdTipoAsiento" Type="smallint" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="SalidaEmergencia" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pasajero">
+          <Key>
+            <PropertyRef Name="IdPasajero" />
+          </Key>
+          <Property Name="IdPasajero" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cedula" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Sexo" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="20" />
+          <Property Name="Celular" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Correo" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Reserva">
+          <Key>
+            <PropertyRef Name="IdReserva" />
+          </Key>
+          <Property Name="IdReserva" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="IdVuelo" Type="bigint" Nullable="false" />
+          <Property Name="ValorTotalReserva" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FechaReserva" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tarifa">
+          <Key>
+            <PropertyRef Name="IdVuelo" />
+            <PropertyRef Name="IdTipoAsiento" />
+          </Key>
+          <Property Name="IdVuelo" Type="bigint" Nullable="false" />
+          <Property Name="IdTipoAsiento" Type="smallint" Nullable="false" />
+          <Property Name="ValorTiquete" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TiquetePasajero">
+          <Key>
+            <PropertyRef Name="IdReserva" />
+            <PropertyRef Name="IdPasajero" />
+          </Key>
+          <Property Name="IdReserva" Type="bigint" Nullable="false" />
+          <Property Name="IdPasajero" Type="bigint" Nullable="false" />
+          <Property Name="IdAsiento" Type="int" />
+          <Property Name="ValorTiquete" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vuelo">
+          <Key>
+            <PropertyRef Name="IdVuelo" />
+          </Key>
+          <Property Name="IdVuelo" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdOrigen" Type="int" Nullable="false" />
+          <Property Name="IdDestino" Type="int" Nullable="false" />
+          <Property Name="IdAerolinea" Type="int" Nullable="false" />
+          <Property Name="IdAvion" Type="int" Nullable="false" />
+          <Property Name="IdEstado" Type="tinyint" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="Salida" Type="time" Precision="0" Nullable="false" />
+          <Property Name="Observaciones" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <Association Name="FK_Asiento_Avion">
+          <End Role="Avion" Type="Self.Avion" Multiplicity="1" />
+          <End Role="Asiento" Type="Self.Asiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Avion">
+              <PropertyRef Name="IdAvion" />
+            </Principal>
+            <Dependent Role="Asiento">
+              <PropertyRef Name="IdAvion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Asiento_TipoAsiento">
+          <End Role="TipoAsiento" Type="Self.TipoAsiento" Multiplicity="1" />
+          <End Role="Asiento" Type="Self.Asiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoAsiento">
+              <PropertyRef Name="IdTipoAsiento" />
+            </Principal>
+            <Dependent Role="Asiento">
+              <PropertyRef Name="IdTipoAsiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Destino_Ciudad">
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="1" />
+          <End Role="Destino" Type="Self.Destino" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="IdCiudad" />
+            </Principal>
+            <Dependent Role="Destino">
+              <PropertyRef Name="IdCiudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Origen_Ciudad">
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="1" />
+          <End Role="Origen" Type="Self.Origen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="IdCiudad" />
+            </Principal>
+            <Dependent Role="Origen">
+              <PropertyRef Name="IdCiudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tarifa_TipoAsiento">
+          <End Role="TipoAsiento" Type="Self.TipoAsiento" Multiplicity="1" />
+          <End Role="Tarifa" Type="Self.Tarifa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoAsiento">
+              <PropertyRef Name="IdTipoAsiento" />
+            </Principal>
+            <Dependent Role="Tarifa">
+              <PropertyRef Name="IdTipoAsiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tarifa_Vuelo">
+          <End Role="Vuelo" Type="Self.Vuelo" Multiplicity="1" />
+          <End Role="Tarifa" Type="Self.Tarifa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vuelo">
+              <PropertyRef Name="IdVuelo" />
+            </Principal>
+            <Dependent Role="Tarifa">
+              <PropertyRef Name="IdVuelo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tiquete_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Reserva">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tiquete_Vuelo">
+          <End Role="Vuelo" Type="Self.Vuelo" Multiplicity="1" />
+          <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vuelo">
+              <PropertyRef Name="IdVuelo" />
+            </Principal>
+            <Dependent Role="Reserva">
+              <PropertyRef Name="IdVuelo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TiquetePasajero_Asiento">
+          <End Role="Asiento" Type="Self.Asiento" Multiplicity="0..1" />
+          <End Role="TiquetePasajero" Type="Self.TiquetePasajero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asiento">
+              <PropertyRef Name="IdAsiento" />
+            </Principal>
+            <Dependent Role="TiquetePasajero">
+              <PropertyRef Name="IdAsiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TiquetePasajero_Pasajero">
+          <End Role="Pasajero" Type="Self.Pasajero" Multiplicity="1" />
+          <End Role="TiquetePasajero" Type="Self.TiquetePasajero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pasajero">
+              <PropertyRef Name="IdPasajero" />
+            </Principal>
+            <Dependent Role="TiquetePasajero">
+              <PropertyRef Name="IdPasajero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TiquetePasajero_Tiquete">
+          <End Role="Reserva" Type="Self.Reserva" Multiplicity="1" />
+          <End Role="TiquetePasajero" Type="Self.TiquetePasajero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reserva">
+              <PropertyRef Name="IdReserva" />
+            </Principal>
+            <Dependent Role="TiquetePasajero">
+              <PropertyRef Name="IdReserva" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vuelo_Aerolinea">
+          <End Role="Aerolinea" Type="Self.Aerolinea" Multiplicity="1" />
+          <End Role="Vuelo" Type="Self.Vuelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aerolinea">
+              <PropertyRef Name="IdAerolinea" />
+            </Principal>
+            <Dependent Role="Vuelo">
+              <PropertyRef Name="IdAerolinea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vuelo_Avion">
+          <End Role="Avion" Type="Self.Avion" Multiplicity="1" />
+          <End Role="Vuelo" Type="Self.Vuelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Avion">
+              <PropertyRef Name="IdAvion" />
+            </Principal>
+            <Dependent Role="Vuelo">
+              <PropertyRef Name="IdAvion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vuelo_Destino">
+          <End Role="Destino" Type="Self.Destino" Multiplicity="1" />
+          <End Role="Vuelo" Type="Self.Vuelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Destino">
+              <PropertyRef Name="IdDestino" />
+            </Principal>
+            <Dependent Role="Vuelo">
+              <PropertyRef Name="IdDestino" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vuelo_EstadoVuelo">
+          <End Role="EstadoVuelo" Type="Self.EstadoVuelo" Multiplicity="1" />
+          <End Role="Vuelo" Type="Self.Vuelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoVuelo">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="Vuelo">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vuelo_Origen">
+          <End Role="Origen" Type="Self.Origen" Multiplicity="1" />
+          <End Role="Vuelo" Type="Self.Vuelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Origen">
+              <PropertyRef Name="IdOrigen" />
+            </Principal>
+            <Dependent Role="Vuelo">
+              <PropertyRef Name="IdOrigen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="AerolineaTNSModelStoreContainer">
+          <EntitySet Name="Aerolinea" EntityType="Self.Aerolinea" Schema="Maestros" store:Type="Tables" />
+          <EntitySet Name="Avion" EntityType="Self.Avion" Schema="Maestros" store:Type="Tables" />
+          <EntitySet Name="Ciudad" EntityType="Self.Ciudad" Schema="Maestros" store:Type="Tables" />
+          <EntitySet Name="Destino" EntityType="Self.Destino" Schema="Maestros" store:Type="Tables" />
+          <EntitySet Name="EstadoVuelo" EntityType="Self.EstadoVuelo" Schema="Maestros" store:Type="Tables" />
+          <EntitySet Name="Origen" EntityType="Self.Origen" Schema="Maestros" store:Type="Tables" />
+          <EntitySet Name="TipoAsiento" EntityType="Self.TipoAsiento" Schema="Maestros" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="Maestros" store:Type="Tables" />
+          <EntitySet Name="Asiento" EntityType="Self.Asiento" Schema="Reserva" store:Type="Tables" />
+          <EntitySet Name="Pasajero" EntityType="Self.Pasajero" Schema="Reserva" store:Type="Tables" />
+          <EntitySet Name="Reserva" EntityType="Self.Reserva" Schema="Reserva" store:Type="Tables" />
+          <EntitySet Name="Tarifa" EntityType="Self.Tarifa" Schema="Reserva" store:Type="Tables" />
+          <EntitySet Name="TiquetePasajero" EntityType="Self.TiquetePasajero" Schema="Reserva" store:Type="Tables" />
+          <EntitySet Name="Vuelo" EntityType="Self.Vuelo" Schema="Reserva" store:Type="Tables" />
+          <AssociationSet Name="FK_Asiento_Avion" Association="Self.FK_Asiento_Avion">
+            <End Role="Avion" EntitySet="Avion" />
+            <End Role="Asiento" EntitySet="Asiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Asiento_TipoAsiento" Association="Self.FK_Asiento_TipoAsiento">
+            <End Role="TipoAsiento" EntitySet="TipoAsiento" />
+            <End Role="Asiento" EntitySet="Asiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Destino_Ciudad" Association="Self.FK_Destino_Ciudad">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Destino" EntitySet="Destino" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Origen_Ciudad" Association="Self.FK_Origen_Ciudad">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Origen" EntitySet="Origen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tarifa_TipoAsiento" Association="Self.FK_Tarifa_TipoAsiento">
+            <End Role="TipoAsiento" EntitySet="TipoAsiento" />
+            <End Role="Tarifa" EntitySet="Tarifa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tarifa_Vuelo" Association="Self.FK_Tarifa_Vuelo">
+            <End Role="Vuelo" EntitySet="Vuelo" />
+            <End Role="Tarifa" EntitySet="Tarifa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tiquete_Usuario" Association="Self.FK_Tiquete_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Reserva" EntitySet="Reserva" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tiquete_Vuelo" Association="Self.FK_Tiquete_Vuelo">
+            <End Role="Vuelo" EntitySet="Vuelo" />
+            <End Role="Reserva" EntitySet="Reserva" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TiquetePasajero_Asiento" Association="Self.FK_TiquetePasajero_Asiento">
+            <End Role="Asiento" EntitySet="Asiento" />
+            <End Role="TiquetePasajero" EntitySet="TiquetePasajero" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TiquetePasajero_Pasajero" Association="Self.FK_TiquetePasajero_Pasajero">
+            <End Role="Pasajero" EntitySet="Pasajero" />
+            <End Role="TiquetePasajero" EntitySet="TiquetePasajero" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TiquetePasajero_Tiquete" Association="Self.FK_TiquetePasajero_Tiquete">
+            <End Role="Reserva" EntitySet="Reserva" />
+            <End Role="TiquetePasajero" EntitySet="TiquetePasajero" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vuelo_Aerolinea" Association="Self.FK_Vuelo_Aerolinea">
+            <End Role="Aerolinea" EntitySet="Aerolinea" />
+            <End Role="Vuelo" EntitySet="Vuelo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vuelo_Avion" Association="Self.FK_Vuelo_Avion">
+            <End Role="Avion" EntitySet="Avion" />
+            <End Role="Vuelo" EntitySet="Vuelo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vuelo_Destino" Association="Self.FK_Vuelo_Destino">
+            <End Role="Destino" EntitySet="Destino" />
+            <End Role="Vuelo" EntitySet="Vuelo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vuelo_EstadoVuelo" Association="Self.FK_Vuelo_EstadoVuelo">
+            <End Role="EstadoVuelo" EntitySet="EstadoVuelo" />
+            <End Role="Vuelo" EntitySet="Vuelo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vuelo_Origen" Association="Self.FK_Vuelo_Origen">
+            <End Role="Origen" EntitySet="Origen" />
+            <End Role="Vuelo" EntitySet="Vuelo" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AerolineaTNSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="AerolineaTnsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Aerolinea" EntityType="AerolineaTNSModel.Aerolinea" />
+          <EntitySet Name="Avion" EntityType="AerolineaTNSModel.Avion" />
+          <EntitySet Name="Ciudad" EntityType="AerolineaTNSModel.Ciudad" />
+          <EntitySet Name="Destino" EntityType="AerolineaTNSModel.Destino" />
+          <EntitySet Name="EstadoVuelo" EntityType="AerolineaTNSModel.EstadoVuelo" />
+          <EntitySet Name="Origen" EntityType="AerolineaTNSModel.Origen" />
+          <EntitySet Name="TipoAsiento" EntityType="AerolineaTNSModel.TipoAsiento" />
           <EntitySet Name="Usuario" EntityType="AerolineaTNSModel.Usuario" />
+          <EntitySet Name="Asiento" EntityType="AerolineaTNSModel.Asiento" />
+          <EntitySet Name="Pasajero" EntityType="AerolineaTNSModel.Pasajero" />
+          <EntitySet Name="Reserva" EntityType="AerolineaTNSModel.Reserva" />
+          <EntitySet Name="Tarifa" EntityType="AerolineaTNSModel.Tarifa" />
+          <EntitySet Name="TiquetePasajero" EntityType="AerolineaTNSModel.TiquetePasajero" />
+          <EntitySet Name="Vuelo" EntityType="AerolineaTNSModel.Vuelo" />
+          <AssociationSet Name="FK_Vuelo_Aerolinea" Association="AerolineaTNSModel.FK_Vuelo_Aerolinea">
+            <End Role="Aerolinea" EntitySet="Aerolinea" />
+            <End Role="Vuelo" EntitySet="Vuelo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Asiento_Avion" Association="AerolineaTNSModel.FK_Asiento_Avion">
+            <End Role="Avion" EntitySet="Avion" />
+            <End Role="Asiento" EntitySet="Asiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vuelo_Avion" Association="AerolineaTNSModel.FK_Vuelo_Avion">
+            <End Role="Avion" EntitySet="Avion" />
+            <End Role="Vuelo" EntitySet="Vuelo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Destino_Ciudad" Association="AerolineaTNSModel.FK_Destino_Ciudad">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Destino" EntitySet="Destino" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Origen_Ciudad" Association="AerolineaTNSModel.FK_Origen_Ciudad">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Origen" EntitySet="Origen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vuelo_Destino" Association="AerolineaTNSModel.FK_Vuelo_Destino">
+            <End Role="Destino" EntitySet="Destino" />
+            <End Role="Vuelo" EntitySet="Vuelo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vuelo_EstadoVuelo" Association="AerolineaTNSModel.FK_Vuelo_EstadoVuelo">
+            <End Role="EstadoVuelo" EntitySet="EstadoVuelo" />
+            <End Role="Vuelo" EntitySet="Vuelo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vuelo_Origen" Association="AerolineaTNSModel.FK_Vuelo_Origen">
+            <End Role="Origen" EntitySet="Origen" />
+            <End Role="Vuelo" EntitySet="Vuelo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Asiento_TipoAsiento" Association="AerolineaTNSModel.FK_Asiento_TipoAsiento">
+            <End Role="TipoAsiento" EntitySet="TipoAsiento" />
+            <End Role="Asiento" EntitySet="Asiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tarifa_TipoAsiento" Association="AerolineaTNSModel.FK_Tarifa_TipoAsiento">
+            <End Role="TipoAsiento" EntitySet="TipoAsiento" />
+            <End Role="Tarifa" EntitySet="Tarifa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tiquete_Usuario" Association="AerolineaTNSModel.FK_Tiquete_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Reserva" EntitySet="Reserva" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TiquetePasajero_Asiento" Association="AerolineaTNSModel.FK_TiquetePasajero_Asiento">
+            <End Role="Asiento" EntitySet="Asiento" />
+            <End Role="TiquetePasajero" EntitySet="TiquetePasajero" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TiquetePasajero_Pasajero" Association="AerolineaTNSModel.FK_TiquetePasajero_Pasajero">
+            <End Role="Pasajero" EntitySet="Pasajero" />
+            <End Role="TiquetePasajero" EntitySet="TiquetePasajero" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tiquete_Vuelo" Association="AerolineaTNSModel.FK_Tiquete_Vuelo">
+            <End Role="Vuelo" EntitySet="Vuelo" />
+            <End Role="Reserva" EntitySet="Reserva" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TiquetePasajero_Tiquete" Association="AerolineaTNSModel.FK_TiquetePasajero_Tiquete">
+            <End Role="Reserva" EntitySet="Reserva" />
+            <End Role="TiquetePasajero" EntitySet="TiquetePasajero" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tarifa_Vuelo" Association="AerolineaTNSModel.FK_Tarifa_Vuelo">
+            <End Role="Vuelo" EntitySet="Vuelo" />
+            <End Role="Tarifa" EntitySet="Tarifa" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Aerolinea">
+          <Key>
+            <PropertyRef Name="IdAerolinea" />
+          </Key>
+          <Property Name="IdAerolinea" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nit" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Vuelo" Relationship="AerolineaTNSModel.FK_Vuelo_Aerolinea" FromRole="Aerolinea" ToRole="Vuelo" />
+        </EntityType>
+        <EntityType Name="Avion">
+          <Key>
+            <PropertyRef Name="IdAvion" />
+          </Key>
+          <Property Name="IdAvion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Modelo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fabricante" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Capacidad" Type="Int32" Nullable="false" />
+          <Property Name="Siglas" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Asiento" Relationship="AerolineaTNSModel.FK_Asiento_Avion" FromRole="Avion" ToRole="Asiento" />
+          <NavigationProperty Name="Vuelo" Relationship="AerolineaTNSModel.FK_Vuelo_Avion" FromRole="Avion" ToRole="Vuelo" />
+        </EntityType>
+        <EntityType Name="Ciudad">
+          <Key>
+            <PropertyRef Name="IdCiudad" />
+          </Key>
+          <Property Name="IdCiudad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreCiudad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Activa" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Destino" Relationship="AerolineaTNSModel.FK_Destino_Ciudad" FromRole="Ciudad" ToRole="Destino" />
+          <NavigationProperty Name="Origen" Relationship="AerolineaTNSModel.FK_Origen_Ciudad" FromRole="Ciudad" ToRole="Origen" />
+        </EntityType>
+        <EntityType Name="Destino">
+          <Key>
+            <PropertyRef Name="IdDestino" />
+          </Key>
+          <Property Name="IdDestino" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCiudad" Type="Int32" Nullable="false" />
+          <Property Name="Aeropuerto" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Ciudad" Relationship="AerolineaTNSModel.FK_Destino_Ciudad" FromRole="Destino" ToRole="Ciudad" />
+          <NavigationProperty Name="Vuelo" Relationship="AerolineaTNSModel.FK_Vuelo_Destino" FromRole="Destino" ToRole="Vuelo" />
+        </EntityType>
+        <EntityType Name="EstadoVuelo">
+          <Key>
+            <PropertyRef Name="IdEstado" />
+          </Key>
+          <Property Name="IdEstado" Type="Byte" Nullable="false" />
+          <Property Name="NombreEstado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Vuelo" Relationship="AerolineaTNSModel.FK_Vuelo_EstadoVuelo" FromRole="EstadoVuelo" ToRole="Vuelo" />
+        </EntityType>
+        <EntityType Name="Origen">
+          <Key>
+            <PropertyRef Name="IdOrigen" />
+          </Key>
+          <Property Name="IdOrigen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCiudad" Type="Int32" Nullable="false" />
+          <Property Name="Aeropuerto" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Ciudad" Relationship="AerolineaTNSModel.FK_Origen_Ciudad" FromRole="Origen" ToRole="Ciudad" />
+          <NavigationProperty Name="Vuelo" Relationship="AerolineaTNSModel.FK_Vuelo_Origen" FromRole="Origen" ToRole="Vuelo" />
+        </EntityType>
+        <EntityType Name="TipoAsiento">
+          <Key>
+            <PropertyRef Name="IdTipoAsiento" />
+          </Key>
+          <Property Name="IdTipoAsiento" Type="Int16" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Observaciones" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Asiento" Relationship="AerolineaTNSModel.FK_Asiento_TipoAsiento" FromRole="TipoAsiento" ToRole="Asiento" />
+          <NavigationProperty Name="Tarifa" Relationship="AerolineaTNSModel.FK_Tarifa_TipoAsiento" FromRole="TipoAsiento" ToRole="Tarifa" />
+        </EntityType>
         <EntityType Name="Usuario">
           <Key>
             <PropertyRef Name="IdUsuario" />
           </Key>
           <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Cedula" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Login" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Clave" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Reserva" Relationship="AerolineaTNSModel.FK_Tiquete_Usuario" FromRole="Usuario" ToRole="Reserva" />
         </EntityType>
-      </Schema>
+        <EntityType Name="Asiento">
+          <Key>
+            <PropertyRef Name="IdAsiento" />
+          </Key>
+          <Property Name="IdAsiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdAvion" Type="Int32" Nullable="false" />
+          <Property Name="IdTipoAsiento" Type="Int16" Nullable="false" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="SalidaEmergencia" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Avion" Relationship="AerolineaTNSModel.FK_Asiento_Avion" FromRole="Asiento" ToRole="Avion" />
+          <NavigationProperty Name="TipoAsiento" Relationship="AerolineaTNSModel.FK_Asiento_TipoAsiento" FromRole="Asiento" ToRole="TipoAsiento" />
+          <NavigationProperty Name="TiquetePasajero" Relationship="AerolineaTNSModel.FK_TiquetePasajero_Asiento" FromRole="Asiento" ToRole="TiquetePasajero" />
+        </EntityType>
+        <EntityType Name="Pasajero">
+          <Key>
+            <PropertyRef Name="IdPasajero" />
+          </Key>
+          <Property Name="IdPasajero" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cedula" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Sexo" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Celular" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Correo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TiquetePasajero" Relationship="AerolineaTNSModel.FK_TiquetePasajero_Pasajero" FromRole="Pasajero" ToRole="TiquetePasajero" />
+        </EntityType>
+        <EntityType Name="Reserva">
+          <Key>
+            <PropertyRef Name="IdReserva" />
+          </Key>
+          <Property Name="IdReserva" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="IdVuelo" Type="Int64" Nullable="false" />
+          <Property Name="ValorTotalReserva" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="FechaReserva" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Usuario" Relationship="AerolineaTNSModel.FK_Tiquete_Usuario" FromRole="Reserva" ToRole="Usuario" />
+          <NavigationProperty Name="Vuelo" Relationship="AerolineaTNSModel.FK_Tiquete_Vuelo" FromRole="Reserva" ToRole="Vuelo" />
+          <NavigationProperty Name="TiquetePasajero" Relationship="AerolineaTNSModel.FK_TiquetePasajero_Tiquete" FromRole="Reserva" ToRole="TiquetePasajero" />
+        </EntityType>
+        <EntityType Name="Tarifa">
+          <Key>
+            <PropertyRef Name="IdVuelo" />
+            <PropertyRef Name="IdTipoAsiento" />
+          </Key>
+          <Property Name="IdVuelo" Type="Int64" Nullable="false" />
+          <Property Name="IdTipoAsiento" Type="Int16" Nullable="false" />
+          <Property Name="ValorTiquete" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="TipoAsiento" Relationship="AerolineaTNSModel.FK_Tarifa_TipoAsiento" FromRole="Tarifa" ToRole="TipoAsiento" />
+          <NavigationProperty Name="Vuelo" Relationship="AerolineaTNSModel.FK_Tarifa_Vuelo" FromRole="Tarifa" ToRole="Vuelo" />
+        </EntityType>
+        <EntityType Name="TiquetePasajero">
+          <Key>
+            <PropertyRef Name="IdReserva" />
+            <PropertyRef Name="IdPasajero" />
+          </Key>
+          <Property Name="IdReserva" Type="Int64" Nullable="false" />
+          <Property Name="IdPasajero" Type="Int64" Nullable="false" />
+          <Property Name="IdAsiento" Type="Int32" />
+          <Property Name="ValorTiquete" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="Asiento" Relationship="AerolineaTNSModel.FK_TiquetePasajero_Asiento" FromRole="TiquetePasajero" ToRole="Asiento" />
+          <NavigationProperty Name="Pasajero" Relationship="AerolineaTNSModel.FK_TiquetePasajero_Pasajero" FromRole="TiquetePasajero" ToRole="Pasajero" />
+          <NavigationProperty Name="Reserva" Relationship="AerolineaTNSModel.FK_TiquetePasajero_Tiquete" FromRole="TiquetePasajero" ToRole="Reserva" />
+        </EntityType>
+        <EntityType Name="Vuelo">
+          <Key>
+            <PropertyRef Name="IdVuelo" />
+          </Key>
+          <Property Name="IdVuelo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdOrigen" Type="Int32" Nullable="false" />
+          <Property Name="IdDestino" Type="Int32" Nullable="false" />
+          <Property Name="IdAerolinea" Type="Int32" Nullable="false" />
+          <Property Name="IdAvion" Type="Int32" Nullable="false" />
+          <Property Name="IdEstado" Type="Byte" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Salida" Type="Time" Nullable="false" Precision="0" />
+          <Property Name="Observaciones" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Aerolinea" Relationship="AerolineaTNSModel.FK_Vuelo_Aerolinea" FromRole="Vuelo" ToRole="Aerolinea" />
+          <NavigationProperty Name="Avion" Relationship="AerolineaTNSModel.FK_Vuelo_Avion" FromRole="Vuelo" ToRole="Avion" />
+          <NavigationProperty Name="Destino" Relationship="AerolineaTNSModel.FK_Vuelo_Destino" FromRole="Vuelo" ToRole="Destino" />
+          <NavigationProperty Name="EstadoVuelo" Relationship="AerolineaTNSModel.FK_Vuelo_EstadoVuelo" FromRole="Vuelo" ToRole="EstadoVuelo" />
+          <NavigationProperty Name="Origen" Relationship="AerolineaTNSModel.FK_Vuelo_Origen" FromRole="Vuelo" ToRole="Origen" />
+          <NavigationProperty Name="Reserva" Relationship="AerolineaTNSModel.FK_Tiquete_Vuelo" FromRole="Vuelo" ToRole="Reserva" />
+          <NavigationProperty Name="Tarifa" Relationship="AerolineaTNSModel.FK_Tarifa_Vuelo" FromRole="Vuelo" ToRole="Tarifa" />
+        </EntityType>
+        <Association Name="FK_Vuelo_Aerolinea">
+          <End Type="AerolineaTNSModel.Aerolinea" Role="Aerolinea" Multiplicity="1" />
+          <End Type="AerolineaTNSModel.Vuelo" Role="Vuelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aerolinea">
+              <PropertyRef Name="IdAerolinea" />
+            </Principal>
+            <Dependent Role="Vuelo">
+              <PropertyRef Name="IdAerolinea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Asiento_Avion">
+          <End Type="AerolineaTNSModel.Avion" Role="Avion" Multiplicity="1" />
+          <End Type="AerolineaTNSModel.Asiento" Role="Asiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Avion">
+              <PropertyRef Name="IdAvion" />
+            </Principal>
+            <Dependent Role="Asiento">
+              <PropertyRef Name="IdAvion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vuelo_Avion">
+          <End Type="AerolineaTNSModel.Avion" Role="Avion" Multiplicity="1" />
+          <End Type="AerolineaTNSModel.Vuelo" Role="Vuelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Avion">
+              <PropertyRef Name="IdAvion" />
+            </Principal>
+            <Dependent Role="Vuelo">
+              <PropertyRef Name="IdAvion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Destino_Ciudad">
+          <End Type="AerolineaTNSModel.Ciudad" Role="Ciudad" Multiplicity="1" />
+          <End Type="AerolineaTNSModel.Destino" Role="Destino" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="IdCiudad" />
+            </Principal>
+            <Dependent Role="Destino">
+              <PropertyRef Name="IdCiudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Origen_Ciudad">
+          <End Type="AerolineaTNSModel.Ciudad" Role="Ciudad" Multiplicity="1" />
+          <End Type="AerolineaTNSModel.Origen" Role="Origen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="IdCiudad" />
+            </Principal>
+            <Dependent Role="Origen">
+              <PropertyRef Name="IdCiudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vuelo_Destino">
+          <End Type="AerolineaTNSModel.Destino" Role="Destino" Multiplicity="1" />
+          <End Type="AerolineaTNSModel.Vuelo" Role="Vuelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Destino">
+              <PropertyRef Name="IdDestino" />
+            </Principal>
+            <Dependent Role="Vuelo">
+              <PropertyRef Name="IdDestino" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vuelo_EstadoVuelo">
+          <End Type="AerolineaTNSModel.EstadoVuelo" Role="EstadoVuelo" Multiplicity="1" />
+          <End Type="AerolineaTNSModel.Vuelo" Role="Vuelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoVuelo">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="Vuelo">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vuelo_Origen">
+          <End Type="AerolineaTNSModel.Origen" Role="Origen" Multiplicity="1" />
+          <End Type="AerolineaTNSModel.Vuelo" Role="Vuelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Origen">
+              <PropertyRef Name="IdOrigen" />
+            </Principal>
+            <Dependent Role="Vuelo">
+              <PropertyRef Name="IdOrigen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Asiento_TipoAsiento">
+          <End Type="AerolineaTNSModel.TipoAsiento" Role="TipoAsiento" Multiplicity="1" />
+          <End Type="AerolineaTNSModel.Asiento" Role="Asiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoAsiento">
+              <PropertyRef Name="IdTipoAsiento" />
+            </Principal>
+            <Dependent Role="Asiento">
+              <PropertyRef Name="IdTipoAsiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tarifa_TipoAsiento">
+          <End Type="AerolineaTNSModel.TipoAsiento" Role="TipoAsiento" Multiplicity="1" />
+          <End Type="AerolineaTNSModel.Tarifa" Role="Tarifa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoAsiento">
+              <PropertyRef Name="IdTipoAsiento" />
+            </Principal>
+            <Dependent Role="Tarifa">
+              <PropertyRef Name="IdTipoAsiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tiquete_Usuario">
+          <End Type="AerolineaTNSModel.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="AerolineaTNSModel.Reserva" Role="Reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Reserva">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TiquetePasajero_Asiento">
+          <End Type="AerolineaTNSModel.Asiento" Role="Asiento" Multiplicity="0..1" />
+          <End Type="AerolineaTNSModel.TiquetePasajero" Role="TiquetePasajero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asiento">
+              <PropertyRef Name="IdAsiento" />
+            </Principal>
+            <Dependent Role="TiquetePasajero">
+              <PropertyRef Name="IdAsiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TiquetePasajero_Pasajero">
+          <End Type="AerolineaTNSModel.Pasajero" Role="Pasajero" Multiplicity="1" />
+          <End Type="AerolineaTNSModel.TiquetePasajero" Role="TiquetePasajero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pasajero">
+              <PropertyRef Name="IdPasajero" />
+            </Principal>
+            <Dependent Role="TiquetePasajero">
+              <PropertyRef Name="IdPasajero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tiquete_Vuelo">
+          <End Type="AerolineaTNSModel.Vuelo" Role="Vuelo" Multiplicity="1" />
+          <End Type="AerolineaTNSModel.Reserva" Role="Reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vuelo">
+              <PropertyRef Name="IdVuelo" />
+            </Principal>
+            <Dependent Role="Reserva">
+              <PropertyRef Name="IdVuelo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TiquetePasajero_Tiquete">
+          <End Type="AerolineaTNSModel.Reserva" Role="Reserva" Multiplicity="1" />
+          <End Type="AerolineaTNSModel.TiquetePasajero" Role="TiquetePasajero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reserva">
+              <PropertyRef Name="IdReserva" />
+            </Principal>
+            <Dependent Role="TiquetePasajero">
+              <PropertyRef Name="IdReserva" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tarifa_Vuelo">
+          <End Type="AerolineaTNSModel.Vuelo" Role="Vuelo" Multiplicity="1" />
+          <End Type="AerolineaTNSModel.Tarifa" Role="Tarifa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vuelo">
+              <PropertyRef Name="IdVuelo" />
+            </Principal>
+            <Dependent Role="Tarifa">
+              <PropertyRef Name="IdVuelo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="AerolineaTNSModelStoreContainer" CdmEntityContainer="AerolineaTnsEntities">
+          <EntitySetMapping Name="Aerolinea">
+            <EntityTypeMapping TypeName="AerolineaTNSModel.Aerolinea">
+              <MappingFragment StoreEntitySet="Aerolinea">
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Nit" ColumnName="Nit" />
+                <ScalarProperty Name="IdAerolinea" ColumnName="IdAerolinea" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Avion">
+            <EntityTypeMapping TypeName="AerolineaTNSModel.Avion">
+              <MappingFragment StoreEntitySet="Avion">
+                <ScalarProperty Name="Siglas" ColumnName="Siglas" />
+                <ScalarProperty Name="Capacidad" ColumnName="Capacidad" />
+                <ScalarProperty Name="Fabricante" ColumnName="Fabricante" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="IdAvion" ColumnName="IdAvion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ciudad">
+            <EntityTypeMapping TypeName="AerolineaTNSModel.Ciudad">
+              <MappingFragment StoreEntitySet="Ciudad">
+                <ScalarProperty Name="Activa" ColumnName="Activa" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="NombreCiudad" ColumnName="NombreCiudad" />
+                <ScalarProperty Name="IdCiudad" ColumnName="IdCiudad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Destino">
+            <EntityTypeMapping TypeName="AerolineaTNSModel.Destino">
+              <MappingFragment StoreEntitySet="Destino">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Aeropuerto" ColumnName="Aeropuerto" />
+                <ScalarProperty Name="IdCiudad" ColumnName="IdCiudad" />
+                <ScalarProperty Name="IdDestino" ColumnName="IdDestino" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstadoVuelo">
+            <EntityTypeMapping TypeName="AerolineaTNSModel.EstadoVuelo">
+              <MappingFragment StoreEntitySet="EstadoVuelo">
+                <ScalarProperty Name="NombreEstado" ColumnName="NombreEstado" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Origen">
+            <EntityTypeMapping TypeName="AerolineaTNSModel.Origen">
+              <MappingFragment StoreEntitySet="Origen">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Aeropuerto" ColumnName="Aeropuerto" />
+                <ScalarProperty Name="IdCiudad" ColumnName="IdCiudad" />
+                <ScalarProperty Name="IdOrigen" ColumnName="IdOrigen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoAsiento">
+            <EntityTypeMapping TypeName="AerolineaTNSModel.TipoAsiento">
+              <MappingFragment StoreEntitySet="TipoAsiento">
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdTipoAsiento" ColumnName="IdTipoAsiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Usuario">
             <EntityTypeMapping TypeName="AerolineaTNSModel.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
                 <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
                 <ScalarProperty Name="Clave" ColumnName="Clave" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Asiento">
+            <EntityTypeMapping TypeName="AerolineaTNSModel.Asiento">
+              <MappingFragment StoreEntitySet="Asiento">
+                <ScalarProperty Name="SalidaEmergencia" ColumnName="SalidaEmergencia" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="IdTipoAsiento" ColumnName="IdTipoAsiento" />
+                <ScalarProperty Name="IdAvion" ColumnName="IdAvion" />
+                <ScalarProperty Name="IdAsiento" ColumnName="IdAsiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pasajero">
+            <EntityTypeMapping TypeName="AerolineaTNSModel.Pasajero">
+              <MappingFragment StoreEntitySet="Pasajero">
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="IdPasajero" ColumnName="IdPasajero" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reserva">
+            <EntityTypeMapping TypeName="AerolineaTNSModel.Reserva">
+              <MappingFragment StoreEntitySet="Reserva">
+                <ScalarProperty Name="FechaReserva" ColumnName="FechaReserva" />
+                <ScalarProperty Name="ValorTotalReserva" ColumnName="ValorTotalReserva" />
+                <ScalarProperty Name="IdVuelo" ColumnName="IdVuelo" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdReserva" ColumnName="IdReserva" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tarifa">
+            <EntityTypeMapping TypeName="AerolineaTNSModel.Tarifa">
+              <MappingFragment StoreEntitySet="Tarifa">
+                <ScalarProperty Name="ValorTiquete" ColumnName="ValorTiquete" />
+                <ScalarProperty Name="IdTipoAsiento" ColumnName="IdTipoAsiento" />
+                <ScalarProperty Name="IdVuelo" ColumnName="IdVuelo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TiquetePasajero">
+            <EntityTypeMapping TypeName="AerolineaTNSModel.TiquetePasajero">
+              <MappingFragment StoreEntitySet="TiquetePasajero">
+                <ScalarProperty Name="ValorTiquete" ColumnName="ValorTiquete" />
+                <ScalarProperty Name="IdAsiento" ColumnName="IdAsiento" />
+                <ScalarProperty Name="IdPasajero" ColumnName="IdPasajero" />
+                <ScalarProperty Name="IdReserva" ColumnName="IdReserva" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vuelo">
+            <EntityTypeMapping TypeName="AerolineaTNSModel.Vuelo">
+              <MappingFragment StoreEntitySet="Vuelo">
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="Salida" ColumnName="Salida" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="IdAvion" ColumnName="IdAvion" />
+                <ScalarProperty Name="IdAerolinea" ColumnName="IdAerolinea" />
+                <ScalarProperty Name="IdDestino" ColumnName="IdDestino" />
+                <ScalarProperty Name="IdOrigen" ColumnName="IdOrigen" />
+                <ScalarProperty Name="IdVuelo" ColumnName="IdVuelo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

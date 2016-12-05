@@ -75,7 +75,15 @@
     <Build Include="Maestros\Tables\Avion.sql" />
     <Build Include="Maestros\Tables\Aerolinea.sql" />
     <Build Include="Reserva\Tables\Pasajero.sql" />
-    <Build Include="Reserva\Tables\Tiquete.sql" />
     <Build Include="Security\Reserva.sql" />
+    <Build Include="Maestros\Tables\Origen.sql" />
+    <Build Include="Maestros\Tables\Destino.sql" />
+    <Build Include="Reserva\Tables\Vuelo.sql" />
+    <Build Include="Reserva\Tables\TiquetePasajero.sql" />
+    <Build Include="Reserva\Tables\Asiento.sql" />
+    <Build Include="Maestros\Tables\TipoAsiento.sql" />
+    <Build Include="Reserva\Tables\Tarifa.sql" />
+    <Build Include="Reserva\Tables\Reserva.sql" />
+    <Build Include="Maestros\Tables\EstadoVuelo.sql" />
   </ItemGroup>
 </Project>

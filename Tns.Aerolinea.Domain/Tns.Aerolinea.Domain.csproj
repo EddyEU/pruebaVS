@@ -40,19 +40,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DomainContracts\ILoginDomain.cs" />
+    <Compile Include="DomainContracts\IReservaDomain.cs" />
+    <Compile Include="DomainContracts\IVueloDomain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoriesContracts\ILoginRepository.cs" />
+    <Compile Include="RepositoriesContracts\IReservaRepository.cs" />
+    <Compile Include="RepositoriesContracts\IVueloRepository.cs" />
+    <Compile Include="Services\LoginDomain.cs" />
+    <Compile Include="Services\ReservaDomain.cs" />
+    <Compile Include="Services\VueloDomain.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Tns.Aerolinea.Application.DTO\Tns.Aerolinea.Application.DTO.csproj">
+      <Project>{2E91C65D-9C8A-4A02-B1F3-D2F83A44540A}</Project>
+      <Name>Tns.Aerolinea.Application.DTO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Tns.Aerolinea.Entities\Tns.Aerolinea.Entities.csproj">
       <Project>{084c9597-2055-4aa8-8a58-69aff1027daf}</Project>
       <Name>Tns.Aerolinea.Entities</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DomainContracts\" />
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

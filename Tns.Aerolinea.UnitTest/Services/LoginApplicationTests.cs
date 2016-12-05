@@ -1,16 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Tns.Aerolinea.Application.DI;
-using Tns.Aerolinea.Application.Services;
-using Tns.Aerolinea.Entities.AerolineaTnsModel;
-using Tns.Aerolinea.Entities.Filter;
-
-namespace Tns.Aerolinea.Application.Services.Tests
+﻿namespace Tns.Aerolinea.Application.Services.Tests
 {
+    using DI;
+    using DTO.Login;
+    using Entities.Filter;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass()]
     public class LoginApplicationTests
     {
@@ -25,12 +19,29 @@ namespace Tns.Aerolinea.Application.Services.Tests
         public void ValidarUsuarioTest()
         {
             LoginApplication target = new LoginApplication();
-            Usuario usuario = new Usuario();
+            UsuarioDTO usuario = new UsuarioDTO();
             LoginFilter filtro = new LoginFilter();
             filtro.Login = "tns";
             filtro.Clave = "tnsclave";
             usuario = target.ValidarUsuario(filtro);
             Assert.IsNotNull(usuario);
+        }
+
+        [TestMethod()]
+        public void RegistrarUsuarioTest()
+        {
+            LoginApplication target = new LoginApplication();
+
+            LoginFilter filtro = new LoginFilter
+            {
+                Nombre = "David",
+                Apellido = "Lopez",
+                Cedula = "708743564",
+                Login = "david",
+                Clave = "davidclave"
+            };
+
+            target.RegistrarUsuario(filtro);
         }
     }
 }

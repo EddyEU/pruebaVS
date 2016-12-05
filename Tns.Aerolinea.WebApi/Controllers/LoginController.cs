@@ -1,12 +1,13 @@
 ﻿namespace Tns.Aerolinea.WebApi.Controllers
 {
+    using Application.DTO.Login;
     using Application.Services;
     using Entities.AerolineaTnsModel;
     using Entities.Filter;
+    using Infrastructure.Excepciones;
     using Microsoft.AspNetCore.Mvc;
     using NLog;
     using System;
-    using System.Collections.Generic;
     using System.Net;
 
     [Route("api/[controller]/[action]")]
@@ -15,9 +16,9 @@
         #region Constants
 
         private const string BadRequestError = "Todos los parámetros de entrada están nulos o vacíos.";
-        private const string InternalServerErrorMotivosReversion = "Error en consultar los motivos de solicitud reversión.";
         private const string NotFoundError = "No se ha encontrado un resultado para la consulta especificada.";
-        private const string InternalServerErrorValidarUsuario = "Error al consultar los pedidos disponibles para hacer una solicitud de reversión.";
+        private const string InternalServerErrorValidarUsuario = "Error al validar el login y clave del usuario.";
+        private const string InternalServerErrorRegistrarUsuario = "Error al registrar un nuevo usuario en el sistema.";
 
         #endregion Constants
 
@@ -34,6 +35,7 @@
         /// </summary>
         /// <param name="login"></param>
         /// <returns></returns>
+        [HttpGet]
         public IActionResult ValidarUsuario([FromQuery]LoginFilter filtro)
         {
             try
@@ -41,7 +43,7 @@
                 if (string.IsNullOrEmpty(filtro.Login) || string.IsNullOrEmpty(filtro.Clave))
                     return BadRequest(BadRequestError);
 
-                Usuario usuario = new LoginApplication().ValidarUsuario(filtro);
+                UsuarioDTO usuario = new LoginApplication().ValidarUsuario((LoginFilter)filtro);
 
                 if (usuario == null) return NotFound(NotFoundError);
 
@@ -54,10 +56,31 @@
             }
         }
 
-        [HttpGet]
-        public IEnumerable<string> Get()
+        /// <summary>
+        /// Registrar un nuevo Usuario
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
+        [HttpPut]
+        public IActionResult RegistrarUsuario([FromBody]LoginFilter login)
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                if (login == null)
+                    return BadRequest(BadRequestError);
+
+                new LoginApplication().RegistrarUsuario(login);
+                return Ok();
+            }
+            catch (BussinesException ex)
+            {
+                return StatusCode((int)HttpStatusCode.Conflict, ex.Message);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, InternalServerErrorRegistrarUsuario);
+                return StatusCode((int)HttpStatusCode.InternalServerError, InternalServerErrorRegistrarUsuario);
+            }
         }
 
         #endregion Methods

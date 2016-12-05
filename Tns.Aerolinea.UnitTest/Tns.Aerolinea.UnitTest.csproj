@@ -57,8 +57,14 @@
   <ItemGroup>
     <Compile Include="Services\LoginApplicationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ReservaApplicationTests.cs" />
+    <Compile Include="Services\VueloApplicationTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Tns.Aerolinea.Application.DTO\Tns.Aerolinea.Application.DTO.csproj">
+      <Project>{2E91C65D-9C8A-4A02-B1F3-D2F83A44540A}</Project>
+      <Name>Tns.Aerolinea.Application.DTO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Tns.Aerolinea.Application\Tns.Aerolinea.Application.csproj">
       <Project>{88EC08B6-144C-47B6-BAC5-6258461E049E}</Project>
       <Name>Tns.Aerolinea.Application</Name>

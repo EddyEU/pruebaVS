@@ -40,15 +40,58 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AerolineaTnsModel\Aerolinea.cs">
+      <DependentUpon>AerolineaTns.tt</DependentUpon>
+    </Compile>
     <Compile Include="AerolineaTnsModel\AerolineaTns.cs">
       <DependentUpon>AerolineaTns.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="AerolineaTnsModel\Asiento.cs">
+      <DependentUpon>AerolineaTns.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AerolineaTnsModel\Avion.cs">
+      <DependentUpon>AerolineaTns.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AerolineaTnsModel\Ciudad.cs">
+      <DependentUpon>AerolineaTns.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AerolineaTnsModel\Destino.cs">
+      <DependentUpon>AerolineaTns.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AerolineaTnsModel\EstadoVuelo.cs">
+      <DependentUpon>AerolineaTns.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AerolineaTnsModel\Origen.cs">
+      <DependentUpon>AerolineaTns.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AerolineaTnsModel\Pasajero.cs">
+      <DependentUpon>AerolineaTns.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AerolineaTnsModel\Reserva.cs">
+      <DependentUpon>AerolineaTns.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AerolineaTnsModel\Tarifa.cs">
+      <DependentUpon>AerolineaTns.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AerolineaTnsModel\TipoAsiento.cs">
+      <DependentUpon>AerolineaTns.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AerolineaTnsModel\TiquetePasajero.cs">
+      <DependentUpon>AerolineaTns.tt</DependentUpon>
+    </Compile>
     <Compile Include="AerolineaTnsModel\Usuario.cs">
       <DependentUpon>AerolineaTns.tt</DependentUpon>
     </Compile>
+    <Compile Include="AerolineaTnsModel\Vuelo.cs">
+      <DependentUpon>AerolineaTns.tt</DependentUpon>
+    </Compile>
     <Compile Include="Filter\LoginFilter.cs" />
+    <Compile Include="Filter\PasajeroDTO.cs" />
+    <Compile Include="Filter\ReservaVueloFilter.cs" />
+    <Compile Include="Filter\TiquetePasajeroFilter.cs" />
+    <Compile Include="Filter\VueloCiudadFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

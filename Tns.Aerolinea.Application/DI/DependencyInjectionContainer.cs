@@ -2,7 +2,9 @@
 {
     using Autofac;
     using Data.Repositories;
+    using Domain.DomainContracts;
     using Domain.RepositoriesContracts;
+    using Domain.Services;
 
     public class DependencyInjectionContainer
     {
@@ -20,12 +22,16 @@
             #region Repository
 
             builder.RegisterType<LoginRepository>().As<ILoginRepository>();
+            builder.RegisterType<VueloRepository>().As<IVueloRepository>();
+            builder.RegisterType<ReservaRepository>().As<IReservaRepository>();
 
             #endregion Repository
 
             #region Domain
 
-            //builder.RegisterType<SolicitudReversionDomain>().As<ISolicitudReversionDomain>();
+            builder.RegisterType<LoginDomain>().As<ILoginDomain>();
+            builder.RegisterType<VueloDomain>().As<IVueloDomain>();
+            builder.RegisterType<ReservaDomain>().As<IReservaDomain>();
 
             #endregion Domain
 

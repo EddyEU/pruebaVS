@@ -4,8 +4,37 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2907b4d021ad465a93b2f206317f3a5f" Name="Diagram1">
-        <EntityTypeShape EntityType="AerolineaTNSModel.Usuario" Width="1.5" PointX="0.75" PointY="0.75" />
+      <Diagram DiagramId="2907b4d021ad465a93b2f206317f3a5f" Name="Aerolinea" ZoomLevel="42">
+        <EntityTypeShape EntityType="AerolineaTNSModel.Aerolinea" Width="1.5" PointX="3" PointY="12.25" />
+        <EntityTypeShape EntityType="AerolineaTNSModel.Avion" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="AerolineaTNSModel.Ciudad" Width="1.5" PointX="0.75" PointY="5.375" />
+        <EntityTypeShape EntityType="AerolineaTNSModel.Destino" Width="1.5" PointX="3" PointY="6.875" />
+        <EntityTypeShape EntityType="AerolineaTNSModel.EstadoVuelo" Width="1.5" PointX="3" PointY="9.875" />
+        <EntityTypeShape EntityType="AerolineaTNSModel.Origen" Width="1.5" PointX="3" PointY="3.875" />
+        <EntityTypeShape EntityType="AerolineaTNSModel.TipoAsiento" Width="1.5" PointX="5.25" PointY="1.5" />
+        <EntityTypeShape EntityType="AerolineaTNSModel.Usuario" Width="1.5" PointX="5.25" PointY="10.125" />
+        <EntityTypeShape EntityType="AerolineaTNSModel.Asiento" Width="1.5" PointX="7.5" PointY="13" />
+        <EntityTypeShape EntityType="AerolineaTNSModel.Pasajero" Width="1.5" PointX="7.5" PointY="9.375" />
+        <EntityTypeShape EntityType="AerolineaTNSModel.Reserva" Width="1.5" PointX="7.5" PointY="5.25" />
+        <EntityTypeShape EntityType="AerolineaTNSModel.Tarifa" Width="1.5" PointX="7.5" PointY="2.5" />
+        <EntityTypeShape EntityType="AerolineaTNSModel.TiquetePasajero" Width="1.5" PointX="9.75" PointY="5.25" />
+        <EntityTypeShape EntityType="AerolineaTNSModel.Vuelo" Width="1.5" PointX="5.25" PointY="4.375" />
+        <AssociationConnector Association="AerolineaTNSModel.FK_Vuelo_Aerolinea" />
+        <AssociationConnector Association="AerolineaTNSModel.FK_Asiento_Avion" />
+        <AssociationConnector Association="AerolineaTNSModel.FK_Vuelo_Avion" />
+        <AssociationConnector Association="AerolineaTNSModel.FK_Destino_Ciudad" />
+        <AssociationConnector Association="AerolineaTNSModel.FK_Origen_Ciudad" />
+        <AssociationConnector Association="AerolineaTNSModel.FK_Vuelo_Destino" />
+        <AssociationConnector Association="AerolineaTNSModel.FK_Vuelo_EstadoVuelo" />
+        <AssociationConnector Association="AerolineaTNSModel.FK_Vuelo_Origen" />
+        <AssociationConnector Association="AerolineaTNSModel.FK_Asiento_TipoAsiento" />
+        <AssociationConnector Association="AerolineaTNSModel.FK_Tarifa_TipoAsiento" />
+        <AssociationConnector Association="AerolineaTNSModel.FK_Tiquete_Usuario" />
+        <AssociationConnector Association="AerolineaTNSModel.FK_TiquetePasajero_Asiento" />
+        <AssociationConnector Association="AerolineaTNSModel.FK_TiquetePasajero_Pasajero" />
+        <AssociationConnector Association="AerolineaTNSModel.FK_Tiquete_Vuelo" />
+        <AssociationConnector Association="AerolineaTNSModel.FK_TiquetePasajero_Tiquete" />
+        <AssociationConnector Association="AerolineaTNSModel.FK_Tarifa_Vuelo" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
