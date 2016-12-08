@@ -1,0 +1,12 @@
+﻿<div ng-controller="UsuarioController as usuario">
+    <menu></menu>
+    <h1>{{usuario.pokemon.name}} #{{usuario.pokemon.id}}</h1>
+    <h2>{{usuario.pokemon.species}}</h2>
+    <h2>Pokédex</h2>
+    <ul>
+        <li><strong>Type</strong> {{usuario.pokemon.type.join(', ')}}</li>
+        <li><strong>Height</strong> {{usuario.pokemon.height}}</li>
+        <li><strong>Weight</strong> {{usuario.pokemon.weight}}</li>
+        <li><strong>Abilities</strong> {{usuario.pokemon.abilities.join(', ')}}</li>
+    </ul>
+</div>
