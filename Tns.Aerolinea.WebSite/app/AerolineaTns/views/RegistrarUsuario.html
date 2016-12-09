@@ -1,12 +1,49 @@
-﻿<div ng-controller="UsuarioController as usuario">
-    <menu></menu>
-    <h1>{{usuario.pokemon.name}} #{{usuario.pokemon.id}}</h1>
-    <h2>{{usuario.pokemon.species}}</h2>
-    <h2>Pokédex</h2>
-    <ul>
-        <li><strong>Type</strong> {{usuario.pokemon.type.join(', ')}}</li>
-        <li><strong>Height</strong> {{usuario.pokemon.height}}</li>
-        <li><strong>Weight</strong> {{usuario.pokemon.weight}}</li>
-        <li><strong>Abilities</strong> {{usuario.pokemon.abilities.join(', ')}}</li>
-    </ul>
+﻿<menu></menu>
+<div class="panel panel-info" ng-controller="UsuarioController">
+    <div class="panel-heading">
+        <h3 class="panel-title">Registro</h3>
+    </div>
+    <div class="panel-body">
+        <form name="UsuarioForm" class="form-horizontal" ng-submit="UsuarioForm.$valid && registrarUsuario()" novalidate>
+            <fieldset>
+                <legend>Nuevo Usuario</legend>
+                <div class="form-group">
+                    <label for="inputNombre" class="col-lg-2 control-label">Nombres</label>
+                    <div class="col-lg-10">
+                        <input ng-model="Usuario.Nombre" type="text" class="form-control" id="inputNombre" placeholder="Nombres" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputApellido" class="col-lg-2 control-label">Apellidos</label>
+                    <div class="col-lg-10">
+                        <input ng-model="Usuario.Apellido" type="text" class="form-control" id="inputApellido" placeholder="Apellidos" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputCedula" class="col-lg-2 control-label">Cedula</label>
+                    <div class="col-lg-10">
+                        <input ng-model="Usuario.Cedula" type="text" class="form-control" id="inputCedula" placeholder="Cedula" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputLogin" class="col-lg-2 control-label">Login</label>
+                    <div class="col-lg-10">
+                        <input ng-model="Usuario.Login" type="text" class="form-control" id="inputLogin" placeholder="Login" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+                    <div class="col-lg-10">
+                        <input ng-model="Usuario.Clave" type="password" class="form-control" id="inputPassword" placeholder="Password" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <button type="reset" class="btn btn-default">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
 </div>

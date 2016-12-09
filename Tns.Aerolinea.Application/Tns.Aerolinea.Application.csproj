@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="DI\DependencyInjectionContainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\DatosMaestrosApplication.cs" />
     <Compile Include="Services\LoginApplication.cs" />
     <Compile Include="Services\ReservaApplication.cs" />
     <Compile Include="Services\VueloApplication.cs" />

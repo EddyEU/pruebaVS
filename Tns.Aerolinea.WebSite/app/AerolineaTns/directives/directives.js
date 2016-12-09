@@ -19,6 +19,11 @@
                 $scope.isActive = function (tab) {
                     return tab === $scope.tab;
                 };
+
+                $scope.isLogin = function () {
+                    //TODO: cambiar el label Inicar sesion por el nombre de la persona logueada
+                    return 'Inicar Sesion';
+                }
             }
         };
         return directive;

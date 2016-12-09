@@ -24,6 +24,7 @@
             builder.RegisterType<LoginRepository>().As<ILoginRepository>();
             builder.RegisterType<VueloRepository>().As<IVueloRepository>();
             builder.RegisterType<ReservaRepository>().As<IReservaRepository>();
+            builder.RegisterType<DatosMaestrosRepository>().As<IDatosMaestrosRepository>();
 
             #endregion Repository
 

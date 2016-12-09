@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RepositoriesContracts\IDatosMaestrosRepository.cs" />
     <Compile Include="DomainContracts\ILoginDomain.cs" />
     <Compile Include="DomainContracts\IReservaDomain.cs" />
     <Compile Include="DomainContracts\IVueloDomain.cs" />

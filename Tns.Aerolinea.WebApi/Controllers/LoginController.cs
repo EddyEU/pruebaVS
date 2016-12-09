@@ -2,7 +2,6 @@
 {
     using Application.DTO.Login;
     using Application.Services;
-    using Entities.AerolineaTnsModel;
     using Entities.Filter;
     using Infrastructure.Excepciones;
     using Microsoft.AspNetCore.Mvc;
@@ -16,7 +15,7 @@
         #region Constants
 
         private const string BadRequestError = "Todos los parámetros de entrada están nulos o vacíos.";
-        private const string NotFoundError = "No se ha encontrado un resultado para la consulta especificada.";
+        private const string NotFoundError = "Usuario y/o clave no son correctos. Por favor verificar.";
         private const string InternalServerErrorValidarUsuario = "Error al validar el login y clave del usuario.";
         private const string InternalServerErrorRegistrarUsuario = "Error al registrar un nuevo usuario en el sistema.";
 
