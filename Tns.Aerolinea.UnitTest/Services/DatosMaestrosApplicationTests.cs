@@ -1,5 +1,6 @@
 ﻿namespace Tns.Aerolinea.Application.Services.Tests
 {
+    using DI;
     using DTO.DatosMaestros;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System.Collections.Generic;
@@ -8,6 +9,13 @@
     [TestClass()]
     public class DatosMaestrosApplicationTests
     {
+        //Use ClassInitialize to run code before running the first test in the class
+        [ClassInitialize()]
+        public static void PedidosApplicationTestsInitialize(TestContext testContext)
+        {
+            DependencyInjectionContainer.InitializeContainer();
+        }
+
         [TestMethod()]
         public void ConsultarDestinosTest()
         {
