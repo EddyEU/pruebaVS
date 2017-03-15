@@ -3,6 +3,8 @@
     using Application.DTO.Login;
     using Entities.AerolineaTnsModel;
     using Entities.Filter;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public interface ILoginRepository
     {
@@ -30,5 +32,13 @@
         /// </summary>
         /// <param name="usuario"></param>
         void RegistrarUsuario(Usuario usuario);
+
+        /// <summary>
+        /// Consulta queryable para UsuarioDTO
+        /// </summary>
+        /// <returns></returns>
+        IQueryable<UsuarioDTO> ConsultarUsuarios();
+
+        List<UsuarioDTO> ConsultarListaUsuarios();
     }
 }

@@ -9,6 +9,8 @@
     using Infrastructure.Excepciones;
     using Infrastructure.Mensajes;
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class LoginApplication
     {
@@ -51,6 +53,12 @@
                 loginRepository.RegistrarUsuario(usuario);
             else
                 throw new BussinesException(Messages.ErrorUsuarioRegistrado);
+        }
+
+        public List<UsuarioDTO> ConsultarUsuario()
+        {
+            ILoginRepository loginRepository = DependencyInjectionContainer.Resolve<ILoginRepository>();
+            return loginRepository.ConsultarListaUsuarios();
         }
     }
 }

@@ -27,13 +27,6 @@
       },
       "runtime": {
         "bin/Debug/Tns.Aerolinea.Application.DTO.dll": {}
-      },
-      "contentFiles": {
-        "bin/Debug/Tns.Aerolinea.Application.DTO.pdb": {
-          "buildAction": "None",
-          "codeLanguage": "any",
-          "copyToOutput": true
-        }
       }
     },
     "Tns.Aerolinea.Data/1.0.0": {
@@ -97,13 +90,6 @@
       },
       "runtime": {
         "bin/Debug/Tns.Aerolinea.Infrastructure.dll": {}
-      },
-      "contentFiles": {
-        "bin/Debug/Tns.Aerolinea.Infrastructure.pdb": {
-          "buildAction": "None",
-          "codeLanguage": "any",
-          "copyToOutput": true
-        }
       }
     }
   }

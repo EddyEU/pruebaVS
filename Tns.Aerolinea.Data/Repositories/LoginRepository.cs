@@ -6,6 +6,8 @@
     using Entities.Filter;
     using Model;
     using System.Linq;
+    using System;
+    using System.Collections.Generic;
 
     public class LoginRepository : ILoginRepository
     {
@@ -30,7 +32,7 @@
                 {
                     Apellido = usuarioDto.Apellido,
                     Cedula = usuarioDto.Cedula,
-                    IdUsuario = usuarioDto.IdUsuario,
+                    Id = usuarioDto.IdUsuario,
                     Login = usuarioDto.Login,
                     Nombre = usuarioDto.Nombre,
                     FechaNacimiento = usuarioDto.FechaNacimiento
@@ -85,6 +87,40 @@
                 context.Set<Usuario>().Add(usuario);
                 context.SaveChanges();
             }
+        }
+
+        /// <summary>
+        /// Consulta queryable para UsuarioDTO
+        /// </summary>
+        /// <returns></returns>
+        public IQueryable<UsuarioDTO> ConsultarUsuarios()
+        {
+            AerolineaTnsEntities context = new AerolineaTnsEntities();
+
+            return context.Set<Usuario>().Select(usuarioDto => new UsuarioDTO()
+            {
+                Apellido = usuarioDto.Apellido,
+                Cedula = usuarioDto.Cedula,
+                Id = usuarioDto.IdUsuario,
+                Login = usuarioDto.Login,
+                Nombre = usuarioDto.Nombre,
+                FechaNacimiento = usuarioDto.FechaNacimiento
+            });
+        }
+
+        public List<UsuarioDTO> ConsultarListaUsuarios()
+        {
+            AerolineaTnsEntities context = new AerolineaTnsEntities();
+
+            return context.Set<Usuario>().Select(usuarioDto => new UsuarioDTO()
+            {
+                Apellido = usuarioDto.Apellido,
+                Cedula = usuarioDto.Cedula,
+                Id = usuarioDto.IdUsuario,
+                Login = usuarioDto.Login,
+                Nombre = usuarioDto.Nombre,
+                FechaNacimiento = usuarioDto.FechaNacimiento
+            }).ToList();
         }
 
         #endregion ILoginRepository Implementation

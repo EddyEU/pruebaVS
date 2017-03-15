@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{A9BD1358-3F47-4883-8F17-F88ACA8C8CA1}"
 EndProject
@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{226112F4-8
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{95E87768-6FEF-4E2A-9B72-31E8D5CC0149}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataBase", "DataBase", "{BFD09FCF-657A-4DCD-B924-ED49F6E1EB54}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tns.Aerolinea.Data", "Tns.Aerolinea.Data\Tns.Aerolinea.Data.csproj", "{E9986BDA-999C-426D-A37F-A1F961B43B5B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tns.Aerolinea.Domain", "Tns.Aerolinea.Domain\Tns.Aerolinea.Domain.csproj", "{F4CB4F55-0D34-4C1C-B3FE-D74C688EB7A5}"
@@ -23,13 +25,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tns.Aerolinea.Infrastructur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tns.Aerolinea.UnitTest", "Tns.Aerolinea.UnitTest\Tns.Aerolinea.UnitTest.csproj", "{3FDCA588-36B4-48A7-B771-B3EC8F9EED62}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Tns.Aerolinea.WebApi", "Tns.Aerolinea.WebApi\Tns.Aerolinea.WebApi.xproj", "{7BBF7272-45C4-4629-B8F4-29931F804992}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tns.Aerolinea.WebApi", "Tns.Aerolinea.WebApi\Tns.Aerolinea.WebApi.csproj", "{7BBF7272-45C4-4629-B8F4-29931F804992}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tns.Aerolinea.Application", "Tns.Aerolinea.Application\Tns.Aerolinea.Application.csproj", "{88EC08B6-144C-47B6-BAC5-6258461E049E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tns.Aerolinea.Application.DTO", "Tns.Aerolinea.Application.DTO\Tns.Aerolinea.Application.DTO.csproj", "{2E91C65D-9C8A-4A02-B1F3-D2F83A44540A}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataBase", "DataBase", "{BFD09FCF-657A-4DCD-B924-ED49F6E1EB54}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Tns.Aerolinea.DataBase", "Tns.Aerolinea.DataBase\Tns.Aerolinea.DataBase.sqlproj", "{5EAFF007-68AC-46A5-B71B-CE33F61C4C34}"
 EndProject
@@ -54,6 +54,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Tns.Aerolinea.WebSite", "Tn
 		SlnRelativePath = "Tns.Aerolinea.WebSite\"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tns.Aerolinea.Api", "Tns.Aerolinea.Api\Tns.Aerolinea.Api.csproj", "{996E8066-2541-46DE-85EA-744C97ED86E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -103,6 +105,10 @@ Global
 		{ABB16DA0-BC91-4B66-9B67-76D7686FD30D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABB16DA0-BC91-4B66-9B67-76D7686FD30D}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{ABB16DA0-BC91-4B66-9B67-76D7686FD30D}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{996E8066-2541-46DE-85EA-744C97ED86E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{996E8066-2541-46DE-85EA-744C97ED86E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{996E8066-2541-46DE-85EA-744C97ED86E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{996E8066-2541-46DE-85EA-744C97ED86E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -118,5 +124,6 @@ Global
 		{2E91C65D-9C8A-4A02-B1F3-D2F83A44540A} = {A9BD1358-3F47-4883-8F17-F88ACA8C8CA1}
 		{5EAFF007-68AC-46A5-B71B-CE33F61C4C34} = {BFD09FCF-657A-4DCD-B924-ED49F6E1EB54}
 		{ABB16DA0-BC91-4B66-9B67-76D7686FD30D} = {95E87768-6FEF-4E2A-9B72-31E8D5CC0149}
+		{996E8066-2541-46DE-85EA-744C97ED86E1} = {95E87768-6FEF-4E2A-9B72-31E8D5CC0149}
 	EndGlobalSection
 EndGlobal
